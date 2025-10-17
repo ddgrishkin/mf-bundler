@@ -7,7 +7,7 @@ module.exports = function (options) {
   const { basePath, isServer } = options;
 
   return {
-    mode: process.env.MODE,
+    mode: process.env.MODE ?? 'production',
     target: isServer ? 'async-node' : 'web',
     module: {
       rules: [
@@ -18,7 +18,11 @@ module.exports = function (options) {
 
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.css'],
-      modules: ['node_modules', paths.src(basePath)],
+      modules: [
+        'node_modules',
+        paths.src(basePath),
+        path.resolve(__dirname, '../node_modules'),
+      ],
       alias: {
         '@/*': path.resolve(paths.src(basePath), '*'),
       },

@@ -1,12 +1,16 @@
 {
-  "compilerOptions": {
-    "target": "es2016",
-    "jsx": "react",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
-  }
+    "compilerOptions": {
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "jsx": "react",
+        "paths": {
+            "@/*": ["./src/*"]
+        }
+    },
+    "include": [
+        "typedefs/**/*",
+        "src/**/*"
+    ]
 }
