@@ -12,7 +12,7 @@ module.exports = function (options) {
     return merge(getCommonConfig({ ...options, isServer: false }), {
         entry: path.resolve(paths.src(basePath), 'index.tsx'),
         output: {
-            filename: '[name].js',
+            filename: 'main.js',
             path: path.resolve(paths.dist(basePath), './static'),
             publicPath: '/',
         },
@@ -23,7 +23,7 @@ module.exports = function (options) {
                     react: {
                         reuseExistingChunk: true,
                         test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                        name: 'vendors/react-vendor',
+                        filename: 'vendors/[contenthash].js',
                         chunks: 'all',
                     },
                 },

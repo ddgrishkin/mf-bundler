@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const build = require('./src/lib/build');
+const build = require('./lib/build');
 
 module.exports = function(args) {
   const [command] = args;

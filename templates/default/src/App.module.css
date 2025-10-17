@@ -1,0 +1,14 @@
+.app {
+    background: #212121;
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+}
+
+h1, h2 {
+    margin: 0;
+    color: white;
+    text-align: center;
+}

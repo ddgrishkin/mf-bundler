@@ -11,7 +11,7 @@ module.exports = function (options) {
         entry: path.resolve(paths.src(basePath), 'server/index.tsx'),
         output: {
             filename: 'index.js',
-            path: paths.dist(basePath),
+            path: path.resolve(paths.dist(basePath), 'server'),
             publicPath: '/',
         },
 
