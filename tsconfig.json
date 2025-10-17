@@ -4,13 +4,6 @@
         "moduleResolution": "bundler",
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "jsx": "react",
-        "paths": {
-            "@/*": ["./src/*"]
-        }
-    },
-    "include": [
-        "typedefs/**/*",
-        "src/**/*"
-    ]
+        "jsx": "react"
+    }
 }

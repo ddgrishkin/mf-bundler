@@ -17,15 +17,11 @@ module.exports = function build() {
   const serverConfig = getServerConfig(options);
   const clientConfig = getClientConfig(options);
 
-  // webpack([serverConfig, clientConfig], (err, stats) => {
-  //   console.log(err, stats.hasErrors(), stats);
-  //   console.log('Build completed successfully.');
-  // });
-
   webpack([serverConfig, clientConfig], (err, stats) => {
-    console.log('Error: ', err);
-    const info = stats.toJson();
+    // TODO: handle errors
+    if (err) console.log('Error: ', err);
 
+    const info = stats.toJson();
     if (stats.hasErrors()) {
       console.error(info.errors);
     }

@@ -9,10 +9,10 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 module.exports = function (options) {
     const { basePath } = options;
 
-    return merge(getCommonConfig({ ...options, isServer: true }), {
+    return merge(getCommonConfig({ ...options, isServer: false }), {
         entry: path.resolve(paths.src(basePath), 'index.tsx'),
         output: {
-            filename: 'main.js',
+            filename: '[name].js',
             path: path.resolve(paths.dist(basePath), './static'),
             publicPath: '/',
         },

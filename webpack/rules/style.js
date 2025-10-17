@@ -9,13 +9,11 @@ function getCssLoaderOptions({ isServer = false }) {
   const isProduction = process.env.MODE === 'production';
   const localIdentName = isProduction ? '[hash:base64:5]' : '[folder]__[local]__[hash:base64:5]';
   const loaderOptions = {
-    // Uncomment when tun on the postcss-loader
-    // importLoaders: 1,
-    namedExport: false,
-    exportOnlyLocals: isServer,
-    exportLocalsConvention: 'camel-case',
     modules: {
       localIdentName,
+      namedExport: false,
+      exportOnlyLocals: isServer,
+      exportLocalsConvention: 'camel-case',
     },
   };
 
@@ -23,18 +21,20 @@ function getCssLoaderOptions({ isServer = false }) {
 }
 
 function getStyleRules({ isServer = false }) {
+  const loaders = [];
+  if (!isServer) {
+    loaders.push(MiniCssExtractPlugin.loader);
+  }
+
+  loaders.push({
+    loader: 'css-loader',
+    options: getCssLoaderOptions({ isServer }),
+  });
+
   return [
     {
       test: /.\module\.css$/i,
-      use: [
-        MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader',
-          options: getCssLoaderOptions({ isServer }),
-        },
-        // Uncomment when decide to use loader
-        // 'postcss-loader'
-      ],
+      use: loaders,
     },
   ]
 }
